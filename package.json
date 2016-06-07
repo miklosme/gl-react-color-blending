@@ -1,0 +1,30 @@
+{
+  "name": "gl-react-blend-modes",
+  "version": "1.0.0",
+  "description": "Blend modes for gl-react (useful in React Native)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/CAPSLOCKUSER/gl-react-blend-modes.git"
+  },
+  "keywords": [
+    "gl-react",
+    "gl-react-native",
+    "OpenGL",
+    "\"blend",
+    "modes\"",
+    "photoshop"
+  ],
+  "author": "\"Miklos Megyes <m.miklos05@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CAPSLOCKUSER/gl-react-blend-modes/issues"
+  },
+  "homepage": "https://github.com/CAPSLOCKUSER/gl-react-blend-modes#readme",
+  "dependencies": {
+    "deep-freeze": "0.0.1"
+  }
+}
