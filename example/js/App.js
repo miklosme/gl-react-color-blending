@@ -1,5 +1,3 @@
-
-
 import React, {Component} from 'react';
 import {
   View,
@@ -7,34 +5,60 @@ import {
   Image,
   Dimensions,
   Picker,
+  Slider,
+  Text,
 } from 'react-native';
 import {Surface} from 'gl-react-native';
 import BlendmodeShaders from './BlendmodeShaders';
 import ColorButton from './ColorButton';
 import Color from 'color';
 
-import { getAllBlendNames } from 'gl-react-blend-modes';
+import {getAllBlendNames} from 'gl-react-blend-modes';
 
 function htmlColorToGLSL(htmlColor) {
-  return Color(htmlColor).rgbArray().map(x => x / 255).concat([1]);
+  return Color(htmlColor).rgbArray().map(x => x / 255);
 }
 const {width: WINDOW_WIDTH} = Dimensions.get('window');
+
+const round = value => Math.floor(value * 100) / 100;
+
+const getDisplayColor = (color) => {
+  return Color().rgb([...color.map(v => v * 255)]).hexString();
+};
 
 class App extends Component {
 
   state = {
-    blendColor: htmlColorToGLSL('green'),
-    blendMode: 'blendAdd'
-  };
-
-  static propTypes = {};
-
-  setColor = color => event => {
-    console.log(color, 'ok')
-    this.setState({blendColor: color});
+    activeProfile: 0,
+    profiles: [{
+      blendMode: 'blendAdd',
+      color: [...htmlColorToGLSL('red'), 1]
+    }, {
+      blendMode: 'blendAdd',
+      color: [...htmlColorToGLSL('green'), 1]
+    }, {
+      blendMode: 'blendAdd',
+      color: [...htmlColorToGLSL('blue'), 1]
+    }, {
+      blendMode: 'blendAdd',
+      color: [...htmlColorToGLSL('yellow'), 1]
+    }, {
+      blendMode: 'blendAdd',
+      color: [...htmlColorToGLSL('purple'), 1]
+    }, {
+      blendMode: 'blendAdd',
+      color: [...htmlColorToGLSL('darkorange'), 1]
+    }, {
+      blendMode: 'blendAdd',
+      color: [...htmlColorToGLSL('tomato'), 1]
+    }]
   };
 
   render() {
+    const colorComponents = ['r', 'g', 'b', 'a'];
+    const {activeProfile, profiles} = this.state;
+    const {color, blendMode} = profiles[activeProfile];
+
     return (
       <View style={s.root}>
         <Surface
@@ -42,8 +66,8 @@ class App extends Component {
           height={300}
         >
           <BlendmodeShaders
-            color={this.state.blendColor}
-            blendMode={this.state.blendMode}
+            color={color}
+            blendMode={blendMode}
           >
             <Image
               source={require('../assets/glitch.jpg')}
@@ -53,19 +77,51 @@ class App extends Component {
           </BlendmodeShaders>
         </Surface>
         <View style={s.row}>
-          <ColorButton color={'red'} callback={this.setColor(htmlColorToGLSL('red'))}/>
-          <ColorButton color={'green'} callback={this.setColor(htmlColorToGLSL('green'))}/>
-          <ColorButton color={'blue'} callback={this.setColor(htmlColorToGLSL('blue'))}/>
-          <ColorButton color={'red'} callback={this.setColor(htmlColorToGLSL('red'))}/>
-          <ColorButton color={'green'} callback={this.setColor(htmlColorToGLSL('green'))}/>
-          <ColorButton color={'blue'} callback={this.setColor(htmlColorToGLSL('blue'))}/>
-          <ColorButton color={'red'} callback={this.setColor(htmlColorToGLSL('red'))}/>
+          {profiles.map((profile, index) => {
+            return (
+              <ColorButton
+                key={index}
+                color={getDisplayColor(profile.color)}
+                callback={() => this.setState({ activeProfile: index })}
+              />
+            )
+          })}
+        </View>
+        <View>
+          {color.map((value, index) => (
+            <View style={s.colorComponent} key={index}>
+              <Text
+                style={s.label}
+              >
+                {colorComponents[index].toUpperCase()} {round(color[index])}
+              </Text>
+              <Slider
+                style={s.slider}
+                maximumValue={1}
+                onValueChange={value => {
+                  const newColor = [...color];
+                  newColor[index] = value;
+                  const newProfiles = [...profiles];
+                  newProfiles[activeProfile] = {
+                    color: newColor,
+                    blendMode: profiles[activeProfile].blendMode
+                  };
+                  this.setState({ profiles: newProfiles })
+                }}
+                value={color[index]}
+              />
+            </View>
+          ))}
         </View>
         <Picker
-          selectedValue={this.state.blendMode}
+          selectedValue={blendMode}
           onValueChange={blendMode => {
-          console.log('change', blendMode)
-          this.setState({ blendMode })
+            const newProfiles = [...profiles];
+            newProfiles[activeProfile] = {
+              color: profiles[activeProfile].color,
+              blendMode,
+            };
+            this.setState({ profiles: newProfiles });
           }}
         >
           {getAllBlendNames().map((mode, index) => (
@@ -100,6 +156,16 @@ const s = StyleSheet.create({
     flexWrap: 'wrap',
     backgroundColor: 'red',
   },
+  colorComponent: {
+    flexDirection: 'row',
+    marginHorizontal: 10,
+  },
+  slider: {
+    flex: 5,
+  },
+  label: {
+    flex: 1,
+  }
 });
 
 

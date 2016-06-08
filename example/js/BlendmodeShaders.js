@@ -36,8 +36,6 @@ void main () {
   return Object.assign({}, prev, curr);
 }, {});
 
-console.log('////////////', shaders)
-
 export default GL.createComponent(
   ({children, color, blendMode = 'blendAdd'}) => (
     <GL.Node
