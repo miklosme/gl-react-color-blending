@@ -7,6 +7,7 @@ import {
   Picker,
   Slider,
   Text,
+  StatusBar,
 } from 'react-native';
 import {Surface} from 'gl-react-native';
 import BlendmodeShaders from './BlendmodeShaders';
@@ -18,13 +19,18 @@ import {getAllBlendNames} from 'gl-react-blend-modes';
 function htmlColorToGLSL(htmlColor) {
   return Color(htmlColor).rgbArray().map(x => x / 255);
 }
+
+function getDisplayColor(color) {
+  return Color().rgb([...color.map(v => v * 255)]).hexString();
+}
+
+function round(value) {
+  return Math.floor(value * 100) / 100;
+}
+
 const {width: WINDOW_WIDTH} = Dimensions.get('window');
 
-const round = value => Math.floor(value * 100) / 100;
-
-const getDisplayColor = (color) => {
-  return Color().rgb([...color.map(v => v * 255)]).hexString();
-};
+const colorComponents = ['r', 'g', 'b', 'a'];
 
 class App extends Component {
 
@@ -48,8 +54,11 @@ class App extends Component {
     }]
   };
 
+  componentWillMount() {
+    StatusBar.setHidden(true);
+  }
+
   render() {
-    const colorComponents = ['r', 'g', 'b', 'a'];
     const { activeProfile, profiles, blendMode } = this.state;
     const { color } = profiles[activeProfile];
 
@@ -76,6 +85,7 @@ class App extends Component {
               <ColorButton
                 key={index}
                 color={getDisplayColor(profile.color)}
+                isSelected={activeProfile === index}
                 callback={() => this.setState({ activeProfile: index })}
               />
             )
@@ -149,6 +159,7 @@ const s = StyleSheet.create({
   },
   label: {
     flex: 1,
+    alignSelf: 'center',
   }
 });
 

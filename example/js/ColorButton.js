@@ -5,13 +5,13 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-function ColorButton({ color, callback }) {
+function ColorButton({ color, callback, isSelected }) {
   return (
     <TouchableHighlight
       style={s.root}
       onPress={event => callback(event)}
     >
-      <View style={[s.button, { backgroundColor: color }]}/>
+      <View style={[s.button, isSelected ? s.selected : null, { backgroundColor: color }]}/>
     </TouchableHighlight>
   );
 }
@@ -23,6 +23,9 @@ const s = StyleSheet.create({
   button: {
     flex: 1,
     height: 50
+  },
+  selected: {
+    // TODO: something
   }
 });
 
