@@ -1,7 +1,7 @@
 {
   "name": "gl-react-color-blending",
-  "version": "1.0.0",
-  "description": "Blend modes for gl-react",
+  "version": "1.0.1",
+  "description": "Color blending for gl-react (with Photoshop blend modes)",
   "main": "lib/index.js",
   "scripts": {
     "compile": "rm -rf lib/ && babel --presets es2015,stage-1,react --source-maps -d lib src",

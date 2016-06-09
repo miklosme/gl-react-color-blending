@@ -1,6 +1,6 @@
-# gl-react-blend-modes
+# gl-react-color-blending
 
-Blend mode shaders for [gl-react-native](https://github.com/ProjectSeptemberInc/gl-react-native).
+Color blending shaders for [gl-react-native](https://github.com/ProjectSeptemberInc/gl-react-native).
 
 Shaders from here: [glsl-blend](https://github.com/jamieowen/glsl-blend).
 
