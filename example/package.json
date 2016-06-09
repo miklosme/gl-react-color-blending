@@ -9,7 +9,7 @@
     "color": "^0.11.1",
     "gl-react": "^2.2.1",
     "gl-react-native": "^2.26.0",
-    "gl-react-blend-modes": "file:..",
+    "gl-react-color-blending": "file:..",
     "react": "^15.1.0",
     "react-native": "^0.27.1"
   }

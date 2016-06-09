@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import {Surface} from 'gl-react-native';
-import ColorBlending, {getAllBlendNames} from 'gl-react-blend-modes';
+import ColorBlending, {getAllBlendNames} from 'gl-react-color-blending';
 
 import ColorButton from './ColorButton';
 import Color from 'color';

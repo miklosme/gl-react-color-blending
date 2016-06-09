@@ -1,5 +1,5 @@
 {
-  "name": "gl-react-blend-modes",
+  "name": "gl-react-color-blending",
   "version": "1.0.0",
   "description": "Blend modes for gl-react",
   "main": "lib/index.js",
