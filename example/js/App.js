@@ -29,35 +29,29 @@ const getDisplayColor = (color) => {
 class App extends Component {
 
   state = {
+    blendMode: 'blendAdd',
     activeProfile: 0,
     profiles: [{
-      blendMode: 'blendAdd',
       color: [...htmlColorToGLSL('red'), 1]
     }, {
-      blendMode: 'blendAdd',
       color: [...htmlColorToGLSL('green'), 1]
     }, {
-      blendMode: 'blendAdd',
       color: [...htmlColorToGLSL('blue'), 1]
     }, {
-      blendMode: 'blendAdd',
       color: [...htmlColorToGLSL('yellow'), 1]
     }, {
-      blendMode: 'blendAdd',
       color: [...htmlColorToGLSL('purple'), 1]
     }, {
-      blendMode: 'blendAdd',
       color: [...htmlColorToGLSL('darkorange'), 1]
     }, {
-      blendMode: 'blendAdd',
       color: [...htmlColorToGLSL('tomato'), 1]
     }]
   };
 
   render() {
     const colorComponents = ['r', 'g', 'b', 'a'];
-    const {activeProfile, profiles} = this.state;
-    const {color, blendMode} = profiles[activeProfile];
+    const { activeProfile, profiles, blendMode } = this.state;
+    const { color } = profiles[activeProfile];
 
     return (
       <View style={s.root}>
@@ -102,10 +96,7 @@ class App extends Component {
                   const newColor = [...color];
                   newColor[index] = value;
                   const newProfiles = [...profiles];
-                  newProfiles[activeProfile] = {
-                    color: newColor,
-                    blendMode: profiles[activeProfile].blendMode
-                  };
+                  newProfiles[activeProfile] = { color: newColor };
                   this.setState({ profiles: newProfiles })
                 }}
                 value={color[index]}
@@ -115,14 +106,7 @@ class App extends Component {
         </View>
         <Picker
           selectedValue={blendMode}
-          onValueChange={blendMode => {
-            const newProfiles = [...profiles];
-            newProfiles[activeProfile] = {
-              color: profiles[activeProfile].color,
-              blendMode,
-            };
-            this.setState({ profiles: newProfiles });
-          }}
+          onValueChange={blendMode => this.setState({ blendMode })}
         >
           {getAllBlendNames().map((mode, index) => (
             <Picker.Item
