@@ -1,6 +1,6 @@
 {
   "name": "gl-react-color-blending",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Color blending for gl-react (with Photoshop blend modes)",
   "main": "lib/index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/CAPSLOCKUSER/gl-react-blend-modes.git"
+    "url": "git+ssh://git@github.com/CAPSLOCKUSER/gl-react-color-blending.git"
   },
   "keywords": [
     "gl-react",
@@ -27,13 +27,13 @@
     "blend modes",
     "photoshop"
   ],
-  "author": "\"Miklos Megyes <m.miklos05@gmail.com>",
+  "author": "Miklos Megyes <m.miklos05@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CAPSLOCKUSER/gl-react-blend-modes/issues"
+    "url": "https://github.com/CAPSLOCKUSER/gl-react-color-blending/issues"
   },
   "engines": {
     "node": ">=4"
   },
-  "homepage": "https://github.com/CAPSLOCKUSER/gl-react-blend-modes#readme"
+  "homepage": "https://github.com/CAPSLOCKUSER/gl-react-color-blending#readme"
 }
