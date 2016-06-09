@@ -9,12 +9,12 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+
 import {Surface} from 'gl-react-native';
-import BlendmodeShaders from './BlendmodeShaders';
+import ColorBlending, {getAllBlendNames} from 'gl-react-blend-modes';
+
 import ColorButton from './ColorButton';
 import Color from 'color';
-
-import {getAllBlendNames} from 'gl-react-blend-modes';
 
 function htmlColorToGLSL(htmlColor) {
   return Color(htmlColor).rgbArray().map(x => x / 255);
@@ -59,8 +59,8 @@ class App extends Component {
   }
 
   render() {
-    const { activeProfile, profiles, blendMode } = this.state;
-    const { color } = profiles[activeProfile];
+    const {activeProfile, profiles, blendMode} = this.state;
+    const {color} = profiles[activeProfile];
 
     return (
       <View style={s.root}>
@@ -68,7 +68,7 @@ class App extends Component {
           width={WINDOW_WIDTH}
           height={300}
         >
-          <BlendmodeShaders
+          <ColorBlending
             color={color}
             blendMode={blendMode}
           >
@@ -77,7 +77,7 @@ class App extends Component {
               onLoad={() => this.forceUpdate()}
               style={s.image}
             />
-          </BlendmodeShaders>
+          </ColorBlending>
         </Surface>
         <View style={s.row}>
           {profiles.map((profile, index) => {
