@@ -2,13 +2,13 @@
 
 Color blending shaders for [gl-react-native](https://github.com/ProjectSeptemberInc/gl-react-native).
 
-Shaders from here: [glsl-blend](https://github.com/jamieowen/glsl-blend).
+Implementations from here: [glsl-blend](https://github.com/jamieowen/glsl-blend).
 
 Check out the example React Native app in the `example` folder.
 
 ## Install
 
-`npm install --save gl-react-color-blending`
+`npm install gl-react-color-blending --save`
 
 ## Usage
 
@@ -26,6 +26,7 @@ import ColorBlending from 'gl-react-color-blending';
 ```
 
 Color: must be a `array` with the length of 4 (RGBA format). Values must be [0..1].
+
 Color example: [0.1, 0.9, 0.1, 1] // greenish
 
 Blend mode is a string.
@@ -61,9 +62,9 @@ Supported blend modes:
 
 `import ColorBlending, {getAllBlendNames, blendModeCodes} from 'gl-react-color-blending';`
 
-`getAllBlendNames`: Every support blend mode name in an array.
+`getAllBlendNames`: Every supported blend mode name in an array.
 
-`blendModeCodes`: Shader codes in text. You can inject it to your own GLSL code with ES2015 template strings.
+`blendModeCodes`: Shader codes in plain text (glsl code). You can inject it to your own shader code with ES2015 template strings.
 
 ## Licence
 
