@@ -36,10 +36,10 @@ Supported blend modes:
 2. `blendAverage`
 3. `blendColorBurn`
 4. `blendColorDodge`
-5. `blendDarken`
-6. `blendDifference`
-7. `blendExclusion`
-8. `blendHardLight`
+4. `blendDarken`
+5. `blendDifference`
+6. `blendExclusion`
+7. `blendHardLight`
 9. `blendHardMix`
 10. `blendLighten`
 11. `blendLinearBurn`
