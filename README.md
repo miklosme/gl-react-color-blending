@@ -2,7 +2,9 @@
 
 Color blending shaders for [gl-react-native](https://github.com/ProjectSeptemberInc/gl-react-native).
 
-Implementations from here: [glsl-blend](https://github.com/jamieowen/glsl-blend).
+*(Should work with gl-react (DOM) too, but that is not tested. PR appriciated.)*
+
+Implementations from [jamieowen/glsl-blend](https://github.com/jamieowen/glsl-blend).
 
 Check out the example React Native app in the `example` folder.
 
@@ -25,13 +27,12 @@ import ColorBlending from 'gl-react-color-blending';
 </ColorBlending>
 ```
 
-Color: must be a `array` with the length of 4 (RGBA format). Values must be [0..1].
+Color: must be a `array` with the length of 4 (RGBA format). Values must be `[0..1]`.
 
-Color example: [0.1, 0.9, 0.1, 1] // greenish
+Color example: `[0.1, 0.9, 0.1, 1]` (greenish)
 
-Blend mode is a string.
+Blend mode is a string, one of the followings:
 
-Supported blend modes:
 1. `blendAdd`
 2. `blendAverage`
 3. `blendColorBurn`
@@ -60,7 +61,7 @@ Supported blend modes:
 
 ## Other API
 
-`import ColorBlending, {getAllBlendNames, blendModeCodes} from 'gl-react-color-blending';`
+`import ColorBlending, { getAllBlendNames, blendModeCodes } from 'gl-react-color-blending';`
 
 `getAllBlendNames`: Every supported blend mode name in an array.
 
