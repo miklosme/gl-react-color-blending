@@ -2,8 +2,6 @@
 
 Color blending shaders for [gl-react-native](https://github.com/ProjectSeptemberInc/gl-react-native).
 
-*(Should work with gl-react (DOM) too, but that is not tested. PR appriciated.)*
-
 Implementations from [jamieowen/glsl-blend](https://github.com/jamieowen/glsl-blend).
 
 Check out the example React Native app in the `example` folder.

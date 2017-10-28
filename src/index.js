@@ -1,20 +1,15 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Shaders, Node, GLSL } from 'gl-react';
 import shaderCodes from './shaders'
 
-export function getAllBlendNames() {
-  return Object.keys(shaderCodes);
-}
+export const blendNames = Object.keys(shaderCodes);
+export const blendShaderCodes = shaderCodes;
 
-export const blendModeCodes = shaderCodes;
-
-import GL from 'gl-react';
-import React, {
-  PropTypes
-} from 'react';
-
-const shaderObjects = getAllBlendNames().reduce((processed, name) => {
+const shaderObjects = blendNames.reduce((processed, name) => {
   const formatted = {
     [name]: {
-      frag: `
+      frag: GLSL`
 precision highp float;
 varying vec2 uv;
 
@@ -33,20 +28,23 @@ void main () {
   return Object.assign({}, processed, formatted);
 }, {});
 
-const shaders = GL.Shaders.create(shaderObjects);
+const shaders = Shaders.create(shaderObjects);
 
-const ColorBlending = GL.createComponent(({ children: tex, color, blendMode = 'blendAdd' }) => (
-  <GL.Node
-    shader={ shaders[blendMode] }
-    uniforms={{ tex, color }}
-  />
-), {
-  displayName: "ColorBlending",
-  propTypes: {
+class ColorBlending extends React.Component {
+  static propTypes = {
     children: PropTypes.any.isRequired,
     color: PropTypes.array,
     blendMode: PropTypes.string,
+  };
+  render() {
+    const { children: tex, color, blendMode = 'blendAdd' } = this.props;
+    return (
+      <Node
+        shader={shaders[blendMode] }
+        uniforms={{ tex, color }}
+      />
+    );
   }
-});
+}
 
 export default ColorBlending;

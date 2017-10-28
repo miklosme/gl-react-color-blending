@@ -1,14 +1,11 @@
 {
   "name": "gl-react-color-blending",
-  "version": "1.0.2",
+  "version": "2.0.4",
   "description": "Color blending for gl-react (with Photoshop blend modes)",
   "main": "lib/index.js",
   "scripts": {
     "compile": "rm -rf lib/ && babel --presets es2015,stage-1,react --source-maps -d lib src",
     "prepublish": "npm run compile"
-  },
-  "peerDependencies": {
-    "gl-react": "~2.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
@@ -35,5 +32,12 @@
   "engines": {
     "node": ">=4"
   },
-  "homepage": "https://github.com/CAPSLOCKUSER/gl-react-color-blending#readme"
+  "homepage": "https://github.com/CAPSLOCKUSER/gl-react-color-blending#readme",
+  "dependencies": {
+    "prop-types": "^15.6.0"
+  },
+  "peerDependencies": {
+    "react": "16.0.0-beta.5",
+    "gl-react": "^3.13.0"
+  }
 }

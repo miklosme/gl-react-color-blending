@@ -1,0 +1,30 @@
+{
+  "name": "color-blending",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "jest-expo": "^22.0.0",
+    "react-native-scripts": "1.6.0",
+    "react-test-renderer": "16.0.0-beta.5"
+  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "node node_modules/jest/bin/jest.js --watch"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "color": "^0.11.1",
+    "expo": "^22.0.0",
+    "gl-react": "^3.13.0",
+    "gl-react-color-blending": "^2.0.2",
+    "gl-react-expo": "^3.6.0",
+    "react": "16.0.0-beta.5",
+    "react-native": "^0.49.5"
+  }
+}
