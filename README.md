@@ -14,24 +14,25 @@ Check out the example React Native app in the `examples` folder.
 
 `npm install gl-react gl-react-color-blending --save`
 
-## Usage
+## Usage with gl-react-expo
 
 ```
+import { Surface } from 'gl-react-expo';
 import ColorBlending from 'gl-react-color-blending';
-```
 
-```
-<ColorBlending
-  color={color}
-  blendMode={blendMode}
->
-    https://i.imgur.com/iPKTONG.jpg
-</ColorBlending>
+// ...
+
+<Surface style={{ width: WINDOW_WIDTH, height: 300 }}>
+    <ColorBlending
+        color={[0.1, 0.9, 0.1, 1]}
+        blendMode="blendAdd"
+    >
+      {{ uri: 'https://i.imgur.com/iPKTONG.jpg' }}
+    </ColorBlending>
+</Surface>
 ```
 
 `color`: must be a `array` with the length of 4 (RGBA format). Values must be a real value between 0 and 1.
-
-For example, this is greenish: `[0.1, 0.9, 0.1, 1]`
 
 `blendMode` is a string, one of the followings:
 
