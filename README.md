@@ -1,14 +1,18 @@
 # gl-react-color-blending
 
-Color blending shaders for [gl-react-native](https://github.com/ProjectSeptemberInc/gl-react-native).
+Color blending shaders for [gl-react](https://github.com/gre/gl-react) and [gl-react-expo](https://github.com/gre/gl-react/tree/master/packages/gl-react-expo).
 
 Implementations from [jamieowen/glsl-blend](https://github.com/jamieowen/glsl-blend).
 
-Check out the example React Native app in the `example` folder.
+Check out the example React Native app in the `examples` folder.
+
+`cd examples/color-blending && npm install && npm start`
+
+![examples/color-blending](example_app.png)
 
 ## Install
 
-`npm install gl-react-color-blending --save`
+`npm install gl-react gl-react-color-blending --save`
 
 ## Usage
 
@@ -21,15 +25,15 @@ import ColorBlending from 'gl-react-color-blending';
   color={color}
   blendMode={blendMode}
 >
-    <Image ... />
+    https://i.imgur.com/iPKTONG.jpg
 </ColorBlending>
 ```
 
-Color: must be a `array` with the length of 4 (RGBA format). Values must be `[0..1]`.
+`color`: must be a `array` with the length of 4 (RGBA format). Values must be a real value between 0 and 1.
 
-Color example: `[0.1, 0.9, 0.1, 1]` (greenish)
+For example, this is greenish: `[0.1, 0.9, 0.1, 1]`
 
-Blend mode is a string, one of the followings:
+`blendMode` is a string, one of the followings:
 
 1. `blendAdd`
 2. `blendAverage`
@@ -59,11 +63,11 @@ Blend mode is a string, one of the followings:
 
 ## Other API
 
-`import ColorBlending, { getAllBlendNames, blendModeCodes } from 'gl-react-color-blending';`
+`import ColorBlending, { blendNames, blendShaderCodes } from 'gl-react-color-blending';`
 
-`getAllBlendNames`: Every supported blend mode name in an array.
+`blendNames`: Every supported blend mode as an array of strings.
 
-`blendModeCodes`: Shader codes in plain text (glsl code). You can inject it to your own shader code with ES2015 template strings.
+`blendShaderCodes`: Shader codes in plain text (glsl code). You can inject it to your own shader.
 
 ## Licence
 

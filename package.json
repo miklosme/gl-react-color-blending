@@ -1,6 +1,6 @@
 {
   "name": "gl-react-color-blending",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Color blending for gl-react (with Photoshop blend modes)",
   "main": "lib/index.js",
   "scripts": {
