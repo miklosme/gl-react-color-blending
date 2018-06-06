@@ -10,6 +10,8 @@ Check out the example React Native app in the `examples` folder.
 
 ![examples/color-blending](example_app.png)
 
+⚠️This is just a collection of shaders, and a `gl-react` Node component, don't expect an advance project. Before you start using it, check out the component in [src/index.js](https://github.com/miklosme/gl-react-color-blending/blob/master/src/index.js), and make sure you understand what does this project can do for you.
+
 ## Install
 
 `npm install gl-react gl-react-color-blending --save`
